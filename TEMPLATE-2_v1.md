@@ -74,7 +74,11 @@ https://old.reddit.com/r/chrome_extensions/comments/15xg1vv/extensions_for_produ
 
 _[Describe the user interface of your Chrome Extension: What will users see when they interact with your extension? How will they interact with the extension? You can include rough sketches or wireframes to illustrate your design, but name your files `<project id>-ui-1.png`, `<project id>-ui-2.png`, etc.]_
 
+TODO
+
 _[Describe which Chrome UI/UX elements you will use in your extension, such as pop-ups, context menus, browser actions, omnibox, sidebar, etc.]_
+
+We would use pop-ups to show specific page statistics/breakdown, and we would allow the user to open up a larger sidebar to show the entire dashboard of statistics, if they'd like to see a more detailed breakdown. 
 
 ### API, Libraries, and Frameworks
 
