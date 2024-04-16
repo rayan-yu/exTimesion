@@ -11,6 +11,10 @@
   "action": {
     "default_popup": "popup.html"
   },
+  "background": {
+    "service_worker": "background.js",
+    "persistent": true
+  },
   "host_permissions": ["https://developer.chrome.com/*", "https://*/*"],
-  "permissions": ["tabGroups"]
+  "permissions": ["tabGroups", "activeTab", "tabs"]
 }

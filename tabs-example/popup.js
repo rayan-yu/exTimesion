@@ -12,13 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+console.log("Hello from popup.js");
 const tabs = await chrome.tabs.query({
-  url: [
-    "https://developer.chrome.com/docs/webstore/*",
-    "https://developer.chrome.com/docs/extensions/*",
-    "https://*/*",
-  ],
+  url: ["https://*/*"],
 });
+var background = chrome.extension.getBackgroundPage();
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
 const collator = new Intl.Collator();
@@ -34,11 +32,13 @@ for (const tab of tabs) {
 
   element.querySelector(".title").textContent = title;
   element.querySelector(".pathname").textContent = pathname;
-  element.querySelector("a").addEventListener("click", async () => {
+  element.querySelector("a")?.addEventListener("click", async () => {
     // need to focus window as well as the active tab
-    await chrome.tabs.update(tab.id, { active: true });
-    await chrome.windows.update(tab.windowId, { focused: true });
+    await chrome.tabs.update(tab?.id, { active: true });
+    await chrome.windows.update(tab?.windowId, { focused: true });
   });
+  element.querySelector(".opentime").textContent =
+    background?.currentPages?.[tab?.id]?.startTime;
 
   elements.add(element);
 }
@@ -52,3 +52,19 @@ button.addEventListener("click", async () => {
     await chrome.tabGroups.update(group, { title: "DOCS" });
   }
 });
+
+// Tab time tracking
+// const FocusPeriod = {
+//   startTime: String,
+//   endTime: String,
+// };
+
+// const TAB_USAGE = {
+//   tabId: Number,
+//   index: Number,
+//   active: Boolean, //we're using active instead of highlighted
+//   url: String, //notice url is now optional
+//   startTime: String,
+//   endTime: String,
+//   focus: Array, //storing multiple focus events of a tab
+// };
