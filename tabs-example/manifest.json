@@ -15,6 +15,17 @@
     "service_worker": "background.js",
     "persistent": true
   },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["popup.js"]
+    }
+  ],
   "host_permissions": ["https://developer.chrome.com/*", "https://*/*"],
-  "permissions": ["tabGroups", "activeTab", "tabs"]
+  "permissions": ["tabGroups", "activeTab", "tabs"],
+  "externally_connectable": {
+    "ids": ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],
+    "matches": ["https://*.google.com/*"],
+    "accepts_tls_channel_id": false
+  }
 }
