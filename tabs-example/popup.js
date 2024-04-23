@@ -29,14 +29,26 @@ chrome.runtime.sendMessage({ foo: "getPages" }, async (response) => {
 
   const template = document.getElementById("li_template");
   const elements = new Set();
+  const domains = new Set();
+
   for (const tab of tabs) {
     const element = template.content.firstElementChild.cloneNode(true);
 
     const title = tab.title.split("|")[0].trim();
     const pathname = new URL(tab.url);
+    const domain = pathname.hostname;
 
+    if(domains.has(domain)){
+      console.log("Duplicate domain found: ", domain);
+      break;
+    }
+
+    domains.add(domain);
+
+    element.querySelector(".domain").textContent = domain;
     element.querySelector(".title").textContent = title;
     element.querySelector(".pathname").textContent = pathname;
+    
     element.querySelector("a")?.addEventListener("click", async () => {
       // need to focus window as well as the active tab
       await chrome.tabs.update(tab?.id, { active: true });
@@ -72,6 +84,7 @@ chrome.runtime.sendMessage({ foo: "getPages" }, async (response) => {
 
     elements.add(element);
   }
+
   document.querySelector("ul").append(...elements);
 
   const button = document.querySelector("button");
@@ -79,7 +92,7 @@ chrome.runtime.sendMessage({ foo: "getPages" }, async (response) => {
     const tabIds = tabs.map(({ id }) => id);
     if (tabIds.length) {
       const group = await chrome.tabs.group({ tabIds });
-      await chrome.tabGroups.update(group, { title: "DOCS" });
+      await chrome.tabGroups.update(group, { title: "Active Tabs" });
     }
   });
 });
