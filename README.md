@@ -5,7 +5,7 @@
 #### Team 10
 
 ## Logo
-![Extension Logo](logo.webp)
+![Extension Logo](logo.png)
 
 ## How to Run:
 1. Download the repository.
