@@ -1,5 +1,13 @@
 let currentPages = {};
 
+// Load data from local storage when the background script initializes
+chrome.storage.local.get(["pages"], (result) => {
+  if (result.pages) {
+    currentPages = result.pages;
+    console.log("Loaded from storage", currentPages);
+  }
+});
+
 chrome.tabs.onCreated.addListener((tab) => {
   console.log("Here in the created listener");
   if (!currentPages.hasOwnProperty(tab.id)) {
@@ -7,6 +15,7 @@ chrome.tabs.onCreated.addListener((tab) => {
       startTime: new Date().toISOString(),
       focus: [],
     };
+    saveCurrentPages();
     console.log("Tab created", currentPages);
   }
 });
@@ -35,13 +44,19 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
       focus: [{ startTime: new Date().toISOString(), endTime: "" }],
     };
   }
-
+  saveCurrentPages();
   console.log(currentPages);
 });
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.foo == "getPages") {
+  if (msg.foo === "getPages") {
     sendResponse(currentPages);
-    return currentPages; // Return the value of currentPages
+    return true; // Indicates that the response will be sent asynchronously
   }
 });
+
+function saveCurrentPages() {
+  chrome.storage.local.set({ pages: currentPages }, () => {
+    console.log("Current pages saved to storage", currentPages);
+  });
+}
