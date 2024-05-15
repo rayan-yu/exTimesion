@@ -4,6 +4,9 @@
 #### CIS-3500 Project
 #### Team 10
 
+## Logo
+![Extension Logo](logo.webp)
+
 ## How to Run:
 1. Download the repository.
 2. Navigate to the `tabs-example` directory.
