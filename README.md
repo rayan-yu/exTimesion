@@ -17,3 +17,7 @@ How to use:
  - Tab Focus Time displays the amount of time the tab has been looked at (i.e. how much time you've actually spent on that tab)
  - Both last across sessions so I can go back in between other applications (i.e. I write an essay on Word and revisit Chrome) and still see my tab times tracked after they are retrieved from the Chrome cache
  - `Group Active tabs` button groups all current active tabs into a tab group
+
+How it should look
+![Screenshot 1](exTimesion.jpg)
+![Screenshot 2](exTimesion_2.jpg)
