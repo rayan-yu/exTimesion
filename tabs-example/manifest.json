@@ -12,16 +12,9 @@
     "default_popup": "popup.html"
   },
   "background": {
-    "service_worker": "background.js",
-    "persistent": true
+    "service_worker": "background.js"
   },
-  "content_scripts": [
-    {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["popup.js"]
-    }
-  ],
-  "host_permissions": ["https://developer.chrome.com/*", "https://*/*"],
+  "host_permissions": ["http://*/*", "https://*/*"],
   "permissions": ["tabGroups", "activeTab", "tabs", "storage"],
   "externally_connectable": {
     "ids": ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"],

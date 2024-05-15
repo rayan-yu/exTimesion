@@ -1,0 +1,25 @@
+{
+    "name": "extimesion",
+    "version": "1.0.0",
+    "description": "A Chrome extension to track tab usage.",
+    "main": "background.js",
+    "scripts": {
+      "build": "webpack --mode production",
+      "start": "webpack --mode development --watch"
+    },
+    "dependencies": {
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2",
+      "chart.js": "^3.5.1",
+      "react-chartjs-2": "^3.0.4"
+    },
+    "devDependencies": {
+      "webpack": "^5.37.1",
+      "webpack-cli": "^4.7.0",
+      "babel-loader": "^8.2.2",
+      "@babel/core": "^7.14.2",
+      "@babel/preset-env": "^7.14.2",
+      "@babel/preset-react": "^7.13.13"
+    }
+  }
+  

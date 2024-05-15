@@ -5,24 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./popup.css" />
+    <title>exTimesion</title>
   </head>
   <body>
-    <template id="li_template">
-      <li>
-        <a>
-          <h3 class="domain">Tab Domain</h3>
-          <h4 class="title">Tab Title</h4>
-          <p class="pathname">Tab Pathname</p>
-          <p class="opentime">Tab Open Time</p>
-          <p class="focustime">Tab Focus Time</p>
-        </a>
-      </li>
-    </template>
-
-    <h1>exTimesion</h1>
-    <button>Group currently active tabs</button>
-    <ul></ul>
-
-    <script src="./popup.js" type="module"></script>
+    <div id="root"></div>
+    <script src="./dist/popup.js"></script>
   </body>
 </html>
