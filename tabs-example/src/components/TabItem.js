@@ -24,6 +24,11 @@ const TabItem = ({ tabs, currentPages }) => {
     acc[domain].push(tab);
     return acc;
   }, {});
+  
+  const handleRemove = (id) => {
+    chrome.tabs.remove(id);
+    return;
+  };
 
   return (
     <>
@@ -72,6 +77,20 @@ const TabItem = ({ tabs, currentPages }) => {
                       : "Tab Focus Time: untracked"}
                   </p>
                 </a>
+                <button 
+                  onClick={() => handleRemove(tab.id)} 
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '1.2rem',
+                    color: '#3d3d3d',
+                    marginLeft: '10px'
+                  }}
+                  title="Close tab"
+                >
+                  &#128465;
+                </button>
               </li>
             ))}
           </ul>
