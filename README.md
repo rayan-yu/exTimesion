@@ -22,6 +22,7 @@
 - Both times last across sessions, so you can switch between other applications (e.g., writing an essay on Word and revisiting Chrome) and still see your tab times tracked after they are retrieved from the Chrome cache.
 - **Group Active Tabs:** Use the `Group Active tabs` button to group all current active tabs into a tab group.
 - **Close Tabs:** For each tab there is an associated trashcan icon, which when pressed, closes out the tab you choose.
+-**Pie Chart:** Displays the time open and time active for the most active tab in a pie chart format 
 
 ## Team Members:
 - Rayan Yu
